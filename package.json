@@ -1,0 +1,16 @@
+{
+    "name": "datadog-cfn-custom-resource",
+    "private": true,
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {},
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "aws4": "^1.8.0",
+        "axios": "^0.18.0",
+        "joi": "^14.3.1",
+        "lodash": "^4.17.11"
+    }
+}

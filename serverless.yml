@@ -1,0 +1,12 @@
+service: datadog-cfn-custom-resource
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  timeboard:
+    handler: functions/timeboard/index.handler
+    environment:
+      API_KEY: ${env:API_KEY}
+      APP_KEY: ${env:APP_KEY}
