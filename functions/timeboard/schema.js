@@ -259,8 +259,4 @@ const Timeboard = Joi.object().keys({
   Widgets: Joi.array().required().items(Widget),
 })
 
-const validate = x => Joi.validate(x, Timeboard, { allowUnknown: true })
-
-module.exports = {
-  validate
-}
+module.exports = Timeboard
