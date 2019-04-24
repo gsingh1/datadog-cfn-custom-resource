@@ -3,6 +3,7 @@ service: datadog-timeboard-example
 provider:
   name: aws
   runtime: nodejs8.10
+  stage: dev
 
 # you can add CloudFormation resource templates here
 resources:

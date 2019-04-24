@@ -37,9 +37,9 @@ const RequestConditionalFormat = Joi.object().keys({
 
 const Request = Joi.object().keys({
   Q: Joi.string().required(),
-  Type: Joi.string().valid('line', 'bars', 'area').default('line'),
+  Type: Joi.string().valid('line', 'bars', 'area'),
   Aggregator: Joi.string().valid('average', 'max', 'min', 'sum'),
-  Stacked: Joi.boolean().default(false),
+  Stacked: Joi.boolean(),
   Style: RequestStyle,
   // change
   ConditionalFormats: Joi.array().items(RequestConditionalFormat),
@@ -54,7 +54,7 @@ const Request = Joi.object().keys({
 const GraphStyle = Joi.object().keys({
   FillMax: Joi.string(),
   FillMin: Joi.string(),
-  Palette: Joi.string().default('green_to_orange'),
+  Palette: Joi.string(),
   PaletteFlip: Joi.boolean(),
 })
 
@@ -66,9 +66,9 @@ const Marker = Joi.object().keys({
 
 const Axis = Joi.object().keys({
   Label: Joi.string(),
-  Min: Joi.string().default('auto'),
-  Max: Joi.string().default('auto'),
-  Scale: Joi.string().default('linear'),
+  Min: Joi.string(),
+  Max: Joi.string(),
+  Scale: Joi.string(),
   IncludeZero: Joi.boolean()
 })
 
@@ -96,7 +96,7 @@ const WidgetDefinition = Joi.object().keys({
   // query_value
   TextAlign: Joi.string().valid('left', 'center', 'right'),
   // hostmap
-  NodeType: Joi.string().valid('host', 'container').default('host'),
+  NodeType: Joi.string().valid('host', 'container'),
   // hostmap
   NoMetricHosts: Joi.boolean(),
   // hostmap
