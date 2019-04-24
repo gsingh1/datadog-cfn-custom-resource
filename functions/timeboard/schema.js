@@ -5,6 +5,9 @@ const _ = require('lodash')
 // see https://docs.datadoghq.com/api/?lang=bash#create-a-dashboard
 // and https://docs.datadoghq.com/graphing/graphing_json/widget_json
 
+// list of supported widgets
+// https://docs.datadoghq.com/graphing/widgets
+
 const validMarkers =
   _.flatMap(
     ['error', 'warning', 'info', 'ok'], 
