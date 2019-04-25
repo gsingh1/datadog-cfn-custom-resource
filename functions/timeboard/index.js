@@ -8,7 +8,7 @@ const { API_KEY, APP_KEY } = process.env
 // datadog API reference
 // https://docs.datadoghq.com/api/?lang=bash#delete-a-dashboard
 const deleteTimeboard = async (physicalResourceId) => {
-  const [_, dashboardId] = physicalResourceId.split('DatadogTimeboard-')
+  const [_, dashboardId] = physicalResourceId.split('-')
   
   // don't bother deleting if we couldn't create the dashboard in the first place
   if (dashboardId === 'Failure') {
@@ -29,7 +29,7 @@ const deleteTimeboard = async (physicalResourceId) => {
 // https://docs.datadoghq.com/api/?lang=bash#update-a-dashboard
 const updateTimeboard = async (physicalResourceId, timeboard) => {
   const data = format(timeboard)
-  const [_, dashboardId] = physicalResourceId.split('DatadogTimeboard-')
+  const [_, dashboardId] = physicalResourceId.split('-')
   const url = `https://api.datadoghq.com/api/v1/dashboard/${dashboardId}?api_key=${API_KEY}&application_key=${APP_KEY}`
 
   console.log(`updating Datadog timeboard id [${dashboardId}]...`)
@@ -56,4 +56,5 @@ const createTimeboard = async (timeboard) => {
   return resp.data.id
 }
 
-module.exports.handler = customResource(schema, createTimeboard, updateTimeboard, deleteTimeboard)
+module.exports.handler = customResource(
+  schema, createTimeboard, updateTimeboard, deleteTimeboard)
