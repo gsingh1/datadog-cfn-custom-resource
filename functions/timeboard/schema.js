@@ -194,7 +194,12 @@ const Timeseries = WidgetDefinition.keys({
         LineType: Joi.string().valid('dashed', 'solid', 'dotted'),
         LineWidth: Joi.string().valid('thin', 'normal', 'thick'),
       }),
-      Metadata: Joi.object(),
+      Metadata: Joi.array().items(
+        Joi.object().keys({
+          Expression: Joi.string(),
+          AliasName: Joi.string(),
+        }).required(),
+      ),
       DisplayType: Joi.string().valid('area', 'bars', 'line'),
     })
   ),
